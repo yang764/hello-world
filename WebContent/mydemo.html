@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>开关灯</title>
+		<style type="text/css">
+			#myfirst{ cursor: pointer; width: 191.999999999999999px; }
+			#bulb{ cursor: pointer; }
+		</style>
+		<script>
+			/* 点击div内的文字改变文字的内容 */
+			function change(){
+				//1.获取当前时间对象
+				var date = new Date().toLocaleString();
+				
+				//2.获取div元素
+				var oDiv = document.getElementById("myfirst"); //document表示当前文档
+
+				//3.将div中的内容替换为当前时间
+				oDiv.innerHTML = date;
+				oDiv.style.border = "2px solid red";
+			}
+				var isOn = false;
+			function change2(){
+				
+				//1.获取div元素
+				var oBulb = document.getElementById("bulb"); //document表示当前文档
+
+				//2.将div中的src替换为指定图片
+				isOn = !isOn;
+				if(isOn){
+					oBulb.src = "image/bulb02.gif";
+				} else {
+					oBulb.src = "image/bulb01.gif";
+				}
+			}
+
+			
+						
+		</script>
+	</head>
+	<body>
+	<a id="22" href="xiaobai.jsp">
+	选择学习模块
+	</a>
+		<h2>01_点击下面的文字改变文字内容</h2>
+		<div id="myfirst" onclick="change()">我的第一个JavaScript程序</div>
+		
+		<h2>02_点击灯泡就可以打开或关闭这盏灯</h2>
+		<img src="image/bulb01.gif" id="bulb" onclick="change2()"/>
+	</body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>创建表格</title>
+<!-- 定义一些样式,将来给表格用 -->
+<style type="text/css">
+table{
+	border:#0099FF 1px solid;
+	width:600px;
+	border-collapse:collapse;
+}
+	
+table td{
+	border:#0099FF 1px solid;
+	padding:10px 20px 3px 1px; 
+}
+</style>
+<script type="text/javascript">
+	//创建单行单列的表格
+	function createTable(){
+		//创建表格元素
+		var table = document.createElement("table");
+		//创建表格行元素
+		var tr = document.createElement("tr");
+		//创建单元格元素
+		var td = document.createElement("td");
+		td.innerHTML = "我是td, 我最牛~!"; //给单元格设置文本
+		tr.appendChild(td);	//将单元格添加到表格行上
+		table.appendChild(tr); //将表格行添加到表格上
+		//将创建好的整个table挂载到div上
+		document.getElementById("tab").appendChild(table);
+	}
+
+	//创建5行6列的表格
+	function createTable2(){
+		//创建table标签
+		var table = document.createElement("table");
+		for(var r = 0;r<5;r++){ //外层循环控制行数
+			var tr = document.createElement("tr");
+			//创建table标签
+			for(var c = 0;c<6;c++){ //内层循环控制列(单元格)数
+				var td = document.createElement("td");
+				td.innerHTML = (r+1)+"行"+(c+1)+"列";
+				//将td挂载到tr上
+				tr.appendChild(td)
+			}
+			//将tr挂载到table上
+			table.appendChild(tr);
+		}
+		//将创建好的整个table挂载到div上
+		document.getElementById("tab").appendChild(table);
+	}
+
+	//创建指定行和列的表格
+	function createTable3(){
+		//获取用户输入的行数
+		var row = document.getElementById("row").value;
+		//获取用户输入的列数
+		var col = document.getElementById("col").value;
+		
+		var table = document.createElement("table");
+		for(var r = 0;r<row;r++){
+			var tr = document.createElement("tr");
+			for(var c = 0;c<col;c++){
+				var td = document.createElement("td");
+				td.innerHTML = (r+1)+"行"+(c+1)+"列";
+				tr.appendChild(td)
+			}
+			table.appendChild(tr);
+		}
+		//将创建好的整个table挂载到div上
+		document.getElementById("tab").appendChild(table);
+	}
+</script>
+</head>
+<body>
+	<a id="22" href="normal.jsp">
+	选择学习模块
+	</a>
+	<input type="button" value="创建表格" onclick="createTable()" /><br />
+
+	<input type="button" value="创建表格(5行6列)" onclick="createTable2()" /><br />
+
+	行数:<input type="text" name="row" id="row"/><br />
+	列数:<input type="text" name="col" id="col"/><br />
+	<input type="button" name="createButton" value="创建表格(行列用户输入)" onclick="createTable3()" />
+	<div id="tab">
+			
+	</div>
+</body>
+</html>

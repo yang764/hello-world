@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>欢迎登录</title>
+	<!-- 引入login.css -->
+	<style type="text/css">
+		body{
+	font-family:"微软雅黑";
+}
+*{
+	margin: 0;
+	padding: 0;
+}
+
+/* ****** header start ****** */
+#header{
+	/*background-color:pink;*/
+	width:900px;
+	height:72px;
+	margin:42px auto 0;
+	margin-left:140px;
+	
+}
+#header img{/* logo */
+	margin-left:50px;
+	margin-right:33px;
+	vertical-align: middle;
+}
+#header span.line{
+	display:inline-block;
+	height:68px;
+	border:2px solid #cbcbcb;
+	margin-right:22px;
+	vertical-align: middle;
+}
+#header span.wel-login{
+	/* font-size:36px;
+	color:#cbcbcb;
+	vertical-align: middle; */
+	font-size:65px;
+	color:#676767;
+	display: block;
+	margin-left: 500px;
+}
+
+#line2 {
+	
+	height: 42px;
+}
+
+#line2 span {
+	float: right;
+	font-size: 24px;
+}
+
+#line2 a span {
+	color: #333333;
+}
+
+#line2>span {
+	color: #999999;
+}
+/* ****** header end ****** */
+
+/* ****** main start ****** */
+#main{
+	width:1200px;
+	height: 500px;
+	margin:42px auto 0;
+	border:7px solid  #f0f0f0 ;
+	border-width:9px 7px;
+}
+
+#main form{
+	/*background-color:pink;*/
+	display:inline-block;
+	width:385px;
+	margin-left:420px;
+	vertical-align: top;
+}
+#main form h1{
+	font-size:26px;
+	font-weight:bold;
+	color:#333333;
+	text-align:center;
+	margin:87px 0 20px;
+}
+#main form div.err-msg{
+	font-size:16px;
+	color:#ff0000;
+	text-align:center;
+	margin-bottom:9px;
+	display: none;
+}
+#main form input{
+	height:49px;
+	width:381px;
+	border:2px solid #ededed;
+	font-size:16px;
+	color:#999999;
+	text-indent:46px;
+	margin-bottom:32px;
+}
+
+#main form input[name='username']{
+	background-image:url('image/u_ico.jpg');
+	background-repeat:no-repeat;
+	background-position:14px 14px;
+}
+
+#main form input[name='password']{
+	background-image:url('image/p_ico.jpg');
+	background-repeat:no-repeat;
+	background-position:14px 14px;
+}
+
+#main form input[type='submit']{
+	height:52px;
+	background-color:#ff0000;
+	font-size:20px;
+	color:#ffffff;
+	text-indent:0px;
+}
+
+#img2 {
+	z-index: 1;
+	position: absolute;
+	left: 915px;
+	top: 405px;
+}
+/* ****** main end ****** */
+
+
+/* ****** footer start ****** */
+#footer{
+	/*background-color:pink;*/
+	width: 1200px;
+	margin:0 auto;
+	margin-top:144px;
+}
+
+#footer p{
+	text-align:center;
+	line-height:34px;
+	font-size:14px;
+	color:#999999;
+}
+/* ****** footer end ****** */
+
+	</style>
+
+	<script type="text/javascript">
+		window.onload = function(){															
+			
+			var uu = document.getElementsByName("username")[0];
+			var ul = document.getElementsByName("password")[0];
+			var im = document.getElementById("img2");
+			
+			if(ul.value == "密码"){
+				ul.type = "text";
+			}
+			
+			uu.onclick = function(){
+				if(uu.value == ""){
+					uu.value = "用户名";
+				}
+				if(uu.value == "用户名"){
+					uu.value = "";
+				}
+			}
+			
+			uu.onblur = function(){
+				if(uu.value == ""){
+					uu.value = "用户名";
+				}
+						
+			}
+					
+			ul.onclick = function(){
+				if(ul.value == ""){
+					ul.type = "text";
+					ul.value = "密码";
+				}
+				if(ul.value == "密码"){
+					ul.value = "";
+					ul.type = "password";
+				}
+			}
+			
+			ul.onfocus = function(){
+				if(ul.value == ""){
+					ul.type = "text";
+					ul.value = "密码";
+				}
+				if(ul.value == "密码"){
+					ul.value = "";
+					ul.type = "password";
+				}
+			}
+			
+			ul.onblur = function(){				
+				if(ul.value == ""){
+					ul.type = "text";
+					ul.value = "密码";
+				}else{
+					ul.type = "password";
+				}		
+			}
+		
+			var odd2 = 0;
+			
+			im.onclick = function(){
+		            
+					if(odd2 % 2==0){
+						ul.type="text";
+					} else {
+						if(ul.value != "密码")
+						{
+							ul.type="password";
+						}
+					}
+
+					odd2++;
+				
+			}		
+		}	
+
+</script>
+	
+</head>
+<body>
+	<!-- header start -->
+	<div id="header">				
+		<span class="wel-login">欢迎登录</span>
+	</div>
+	
+	<!-- header end -->
+
+	<!-- main start -->
+	<div id="main">
+		
+		<form method="post" action="LoginUser" onkeydown="if(event.keyCode==13)return false;">
+			<h1>登录</h1>
+			<div class="err-msg">
+				账户名与密码不匹配请重新输入
+			</div>
+			<input type="text" name="username" value="用户名"/>
+			<input type="password" name="password" value="密码"/>
+			<img id="img2" src="image/apture.jpg">
+			<input type="submit" value="登 录"/>
+		</form>
+		<span id="line2">
+			<a href="MainPage.jsp"> <span>请注册</span>
+			</a> <span>没有账号？</span>
+		</span>
+	</div>
+	<!-- main end -->
+	
+	<!-- footer start -->
+	<div id="footer">
+		<p>
+			关于我们 |
+			联系我们 |
+			人才招聘 |
+			商家入驻 |
+			营销中心 |			
+			友情链接 |
+			销售联盟 |						
+			English Site<br>
+			Copyright © 2018 - 2020 复习fuxi.com 版权所有
+		</p>
+	</div>
+	<!-- footer end -->
+</body>
+</html>
