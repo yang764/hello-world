@@ -8,12 +8,11 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import review.JDBCUtils;
 
 /**
  *  @author: hang yang 
- *	@time: 2018年7月27日 下午12:41:04
+ *	@time: 
  */
 public class LoginUser extends HttpServlet {
 	private static final long serialVersionUID = 3L;
@@ -29,19 +28,16 @@ public class LoginUser extends HttpServlet {
 		if(parameter == null){			
 			parameter = (String) req.getAttribute("username");
 		}
-		byte[] bytes = parameter.getBytes("iso8859-1");
-		parameter = new String(bytes, "utf-8");
-		System.out.println("logiin");
-		System.out.println(parameter);
+		
+		System.out.println("at LoginUser doGet()");
 		
 		login(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
+		System.out.println("at LoginUser doPost()");
 		doGet(request, response);
-
 	}
 
 	private void login(HttpServletRequest request, HttpServletResponse response) {
@@ -58,13 +54,7 @@ public class LoginUser extends HttpServlet {
 			if(pw == null){
 				pw = (String) request.getAttribute("password");
 			}
-			byte[] bytes = un.getBytes("iso8859-1");
-			un = new String(bytes, "utf-8");
-			byte[] bytex = pw.getBytes("iso8859-1");
-			pw = new String(bytex, "utf-8");
-			System.out.println(un);
-			System.out.println(pw);
-			
+					
 			conn = JDBCUtils.getConnection();
 
 			String sql = "select * from user where username=? and password=?";
@@ -77,8 +67,7 @@ public class LoginUser extends HttpServlet {
 			rs = ps.executeQuery();
 
 			if(rs.next()){			
-				System.out.println("78");
-				System.out.println("76"+request.getParameter("username"));
+				System.out.println("at LoginUser login():"+request.getParameter("username"));
 				request.getRequestDispatcher("/LoginAfter").forward(request, response);
 			} else {
 				request.getRequestDispatcher("/login_fail.html").forward(request, response);	
@@ -89,6 +78,5 @@ public class LoginUser extends HttpServlet {
 		} finally {			
 			JDBCUtils.close(conn, ps, rs);
 		}	
-
 	}
 }

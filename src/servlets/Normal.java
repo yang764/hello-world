@@ -27,38 +27,36 @@ public class Normal extends HttpServlet {
 		
 		if( parameter.equals("Table") ){
 			response.setContentType("text/html;charset=utf-8");
-			File file = new File("C:/Users/Hang Yang/Desktop/study/eclipse installation/eclipse/workspace/613/WebContent/Table.html");	
+			File file = new File(this.getServletContext().getRealPath("Table.html"));	
 			BufferedInputStream bis = new BufferedInputStream(new FileInputStream(file));
 			byte[] b = new byte[(int)file.length()];
 			bis.read(b);			
 			response.getOutputStream().write(b);
-			response.setHeader("Refresh", "8; url=/613/laoyi2.html");
+			response.setHeader("Refresh", "20; url=/613/laoyi2.html");
 					
 		}else if ( parameter.equals("CreateTable") ){
 			response.setContentType("text/html;charset=utf-8");
-			File file = new File("C:/Users/Hang Yang/Desktop/study/eclipse installation/eclipse/workspace/613/WebContent/CreateTable.html");	
+			File file = new File(this.getServletContext().getRealPath("CreateTable.html"));	
 			BufferedInputStream bis = new BufferedInputStream(new FileInputStream(file));
 			byte[] b = new byte[(int)file.length()];
 			bis.read(b);			
 			response.getOutputStream().write(b);
-			response.setHeader("Refresh", "8; url=/613/laoyi2.html");
+			response.setHeader("Refresh", "20; url=/613/laoyi2.html");
 			
 		} else if ( parameter.equals("Font") ){
 			response.setContentType("text/html;charset=utf-8");
-			File file = new File("C:/Users/Hang Yang/Desktop/study/eclipse installation/eclipse/workspace/613/WebContent/Font.html");	
+			File file = new File(this.getServletContext().getRealPath("Font.html"));	
 			BufferedInputStream bis = new BufferedInputStream(new FileInputStream(file));
 			byte[] b = new byte[(int)file.length()];
 			bis.read(b);			
 			response.getOutputStream().write(b);
-			response.setHeader("Refresh", "8; url=/613/laoyi2.html");
-		}
-		
+			response.setHeader("Refresh", "20; url=/613/laoyi2.html");
+		}		
 	}
-
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		System.out.println("µ½learn");
+		System.out.println("at Normal doPost()");
 		learn(request, response);
 	}
 
@@ -80,7 +78,5 @@ public class Normal extends HttpServlet {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
-
 	}
 }

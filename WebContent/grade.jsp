@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>学习模块选择</title>
+<title>成绩</title>
 <style type="text/css">
 #a, #b, #c {
 	border: 7px solid #F0F0F0;

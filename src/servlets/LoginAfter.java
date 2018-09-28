@@ -4,15 +4,11 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.HashMap;
-
-import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
 import review.JDBCUtils;
 
 /**
@@ -21,25 +17,18 @@ import review.JDBCUtils;
  */
 public class LoginAfter extends HttpServlet {
 	private static final long serialVersionUID = 4L;
-	static public int inr = 0; 
-	private boolean flag = true;
-	private String un; 
-	private String pw;
-	private String un1; 
-	private String pw1;
+	static public int inr = 0; 	
 	public static HttpServletRequest requ;
 	public static HttpServletResponse resp;
-	private HashMap<String, String> paramMap = new HashMap<String, String>();
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {	
-		request.setCharacterEncoding("utf-8");
 		login(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		System.out.println("77"+request.getParameter("username"));
+		System.out.println("at LoginAfter doPost()");
 		doGet(request, response);
 	}
 
@@ -53,19 +42,11 @@ public class LoginAfter extends HttpServlet {
 			String pw = request.getParameter("password");
 			if(un == null){
 				un = Entrance.map.get("username");	
-				System.out.println(un);
 			}
 			if(pw == null){
 				pw = Entrance.map.get("password");	
 			}
-			byte[] bytes = un.getBytes("iso8859-1");
-			un = new String(bytes, "utf-8");
-			byte[] bytex = pw.getBytes("iso8859-1");
-			pw = new String(bytex, "utf-8");
-			System.out.println(un);						
-			System.out.println(pw);	
-
-
+										
 			conn = JDBCUtils.getConnection();
 
 			String sql = "select * from user where username=? and password=?";
@@ -80,7 +61,7 @@ public class LoginAfter extends HttpServlet {
 			if(rs.next()){				
 				if(rs.getString("level") == null){					
 					request.getRequestDispatcher("/Entrance").forward(request, response);
-				}else if(rs.getString("level").equals("小白")){
+				}else if(rs.getString("level").equals("rookie")){
 					if(inr == 1){
 						request.setAttribute("username", un);
 						request.setAttribute("password", pw);
@@ -101,7 +82,7 @@ public class LoginAfter extends HttpServlet {
 						request.getRequestDispatcher("/xiaobai.jsp").forward(request, response);
 					}
 
-				}else if(rs.getString("level").equals("一般")){
+				}else if(rs.getString("level").equals("normal")){
 					if(inr == 1){
 						request.setAttribute("username", un);
 						request.setAttribute("password", pw);
@@ -123,7 +104,7 @@ public class LoginAfter extends HttpServlet {
 						request.getRequestDispatcher("/normal.jsp").forward(request, response);
 					}
 
-				}else if(rs.getString("level").equals("大神")){
+				}else if(rs.getString("level").equals("god")){
 					if(inr == 1){
 						request.setAttribute("username", un);
 						request.setAttribute("password", pw);
@@ -146,7 +127,7 @@ public class LoginAfter extends HttpServlet {
 					}					
 				}
 
-			} else {
+			}else{
 				request.getRequestDispatcher("/login_fail.html").forward(request, response);	
 			}
 
@@ -155,6 +136,5 @@ public class LoginAfter extends HttpServlet {
 		} finally {			
 			JDBCUtils.close(conn, ps, rs);
 		}	
-
 	}
 }

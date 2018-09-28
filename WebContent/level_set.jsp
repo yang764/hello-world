@@ -7,7 +7,7 @@
 
 <html>
 <head>
-<meta charset="UTF-8">
+<meta charset = "UTF-8">
 <title>实力选择</title>
 <style type="text/css">
 div {
@@ -21,21 +21,21 @@ div {
 #v1{
 	position: absolute;
 	top: 550px;
-	left: 260px;
+	left: 200px;
 	font-size: 30px;
 }
 
 #v2{
 	position: absolute;
 	top: 550px;
-	left: 640px;
+	left: 750px;
 	font-size: 30px;
 }
 
 #v3{
 	position: absolute;
 	top: 550px;
-	left: 1018px;
+	left: 1180px;
 	font-size: 30px;
 }
 
@@ -82,7 +82,7 @@ window.onload = function(){
 		<table>
 			<tr>
 
-				<td><input id="button1" type="submit" name="level" value="小白" /> 
+				<td><input id="button1" type="submit" name="level" value="rookie" /> 
 					<span id="span1"></span></td>
 				<td />
 				<td />
@@ -94,7 +94,7 @@ window.onload = function(){
 				<td />
 				<td />
 				<td />
-				<td><input id="button2" type="submit" name="level" value="一般" />
+				<td><input id="button2" type="submit" name="level" value="normal" />
 					<span id="span2"></span></td>
 				<td />
 				<td />
@@ -106,7 +106,7 @@ window.onload = function(){
 				<td />
 				<td />
 				<td />
-				<td><input id="button3" type="submit" name="level" value="大神" />
+				<td><input id="button3" type="submit" name="level" value="god" />
 					<span id="span3"></span></td>
 				
 			</tr>

@@ -5,18 +5,18 @@
     <welcome-file>s</welcome-file>
     <welcome-file>index.htm</welcome-file>
     <welcome-file>index.jsp</welcome-file>
-    <welcome-file>default.html</welcome-file>
+    <welcome-file>login.html</welcome-file>
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
   <servlet>
-    <display-name>SServlet</display-name>
-    <servlet-name>SServlet</servlet-name>
-    <servlet-class>servlets.Servlet1</servlet-class>
+    <display-name>Servlet</display-name>
+    <servlet-name>Servlet</servlet-name>
+    <servlet-class>servlets.Servlet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>SServlet</servlet-name>
-    <url-pattern>/s</url-pattern>
+    <servlet-name>Servlet</servlet-name>
+    <url-pattern>/Servlet</url-pattern>
   </servlet-mapping>
   <servlet>
     <display-name>RegistUser1</display-name>

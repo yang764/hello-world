@@ -20,23 +20,16 @@ import review.JDBCUtils;
  *	@time: 2018年7月27日 下午12:40:50
  *	主要的Servlet，后面的活动都是由这里开始的
  */
-public class Servlet1 extends HttpServlet {
+public class Servlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		request.setAttribute("USER", getUsername(request));/*将getUsername（）返回的结果set给USER，
 		在前端可以通过EL表达式“$USER”获取*/
 		
 		//request对象的转发方式，网页跳转到MainPage.jsp
-		request.getRequestDispatcher("/login.html").forward(request, response);
-	}
-
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-
-		doGet(request, response);
-
+		request.getRequestDispatcher("/MainPage.jsp").forward(request, response);
 	}
 
 	public List<UsernAme> getUsername(HttpServletRequest request){

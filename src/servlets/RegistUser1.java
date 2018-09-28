@@ -3,36 +3,34 @@ package servlets;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.util.HashMap;
-
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-
 import review.JDBCUtils;
 
 /**
  *  @author: hang yang 
- *	@time: 2018��7��27�� ����12:40:57
+ *	@time: 
  */
 
 public class RegistUser1 extends HttpServlet {
 	private static final long serialVersionUID = 2L;
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		System.out.println("jlkgjskglkdjgkjgg");
-		request.setCharacterEncoding("utf-8");
+			throws ServletException, IOException {		
+		System.out.println("at RegistUser1 doGet()");		
 		regist(request, response);	
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
+		//如果xxx.jsp或xxx.html里面form表单提交方式为post/POST, 则调用"action="后面Servlet的doPost()方法;
+		//不同Servlet之间的request转发转的是同一个request对象，所以如果之前从jsp或html是POST提交的request,
+		//再被转发到别的Servlet时就同样会调用doPost(),直至转到下一个jsp或html后提交一个新的request。
+		
 		doGet(request, response);
-
+		
 	}
 	
 	private void regist(HttpServletRequest request, HttpServletResponse response) {
@@ -55,7 +53,7 @@ public class RegistUser1 extends HttpServlet {
 			ps.setString(3, le);
 			ps.setInt(4, 0);
 			ps.executeUpdate();
-			System.out.println("login");
+			System.out.println("at RegistUser1 regist()");
 			request.getRequestDispatcher("/login.html").forward(request, response);
 				
 		} catch (Exception e) {

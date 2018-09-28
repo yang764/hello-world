@@ -4,10 +4,10 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<!-- <meta charset="utf-8" /> -->
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+<meta  http-equiv="Content-Type" content="text/html"  charset = "utf-8">
 <title>欢迎注册</title>
-<!-- <link rel="stylesheet" href="css/regist.css"/>  -->
+
 <style type="text/css">
 body {
 	font-family: 微软雅黑;
@@ -253,7 +253,7 @@ body, table, tr, td {
 				
 					button.disabled = true;
 
-				} else {
+				}else{
 
 					if( (ul.value != un.value) && (0 == w) && re.exec(uu.value) ){					
 						ty.style.display = "block";
@@ -264,9 +264,7 @@ body, table, tr, td {
 						ty.style.display = "none"; 
 
 						if( re.exec(uu.value) ){
-							alert("注册成功！走，登录去。");						
-							button.disabled = false;
-                  
+							alert("注册成功！走，登录去。");						        
 						}
 					 }					
 				}
@@ -312,8 +310,7 @@ body, table, tr, td {
 				if(uu.value == "用户名"){   /* flag3 false 输入的不是"用户名" */
 					ie.style.display = "none";    /* 隐藏             请随意 */
 					ei.style.display = "block";	  /* 显示             名字这东西*/		
-				}
-				
+				}				
 								
 				if( uu.value != "用户名" ){
 
@@ -325,7 +322,7 @@ body, table, tr, td {
 						ul.readOnly = true;
 						button.disabled = true;					
 						
-					} else {
+					}else{
 						
 						ie.style.display = "block";
 						ei.style.display = "none";						
@@ -366,7 +363,6 @@ body, table, tr, td {
 					un.type="text";
 					un.value = "设置密码";
 				}
-
 
 			}
 
@@ -409,17 +405,15 @@ body, table, tr, td {
 					un.value = "设置密码";
 					un.type="text";					
 				}	
-								
+				
+				if( (ul.value != "确认密码") && (ul.value != "") && (0 == w) && (un.value != "") && (un.value != "设置密码")){
+					button.disabled = false;
+				}
 			}
 			
 			var ffflag = true;
 
 			ul.onclick = function(){
-				
-				/* if(uu.value == "用户名"){
-					un.readOnly = true;
-					ul.readOnly = true; 
-				} */
 				
 				if(ul.value == "确认密码"){
 					ul.type = "password";
@@ -438,19 +432,12 @@ body, table, tr, td {
 				}
 				
 				if(ffflag == true){
-					/* ul.type="password"; */
 					ffflag = false;
 				}
 
 				flag2 = true;
 
-				/* if(ul.value == ""){
-					ul.type="text";
-					ul.value = "确认密码";				
-				} */
-
-				 if(ul.value == "确认密码"){
-					/* ul.type="password"; */
+				if(ul.value == "确认密码"){	
 					ul.value = "";
 				} 
 				
@@ -478,56 +465,48 @@ body, table, tr, td {
 					}else{
 						ty.style.display = "none";
 					}
-				}														
+				}
+				
+				if( (ul.value != "确认密码") && (ul.value != "") && (0 == w) && (un.value != "") && (un.value != "设置密码")){
+					button.disabled = false;
+				}
 			}
 
 			var im = document.getElementById("img1");
 			var odd = 0;
-
-			im.onclick = function(){					 
-				
-				if( (re.exec(uu.value)) && (0 == w) ){
-									
+			im.onclick = function(){					 				
+				if( (re.exec(uu.value)) && (0 == w) ){									
 					var p1 = document.getElementById("password1");				
-
 					if(odd % 2==0){
 						p1.type="text";
-					} else {
+					}else{
 						if(ul.value != "确认密码" && un.value != "设置密码")
 						{
 							p1.type="password";
 						}
 					}
-
 					odd++;
-
 				}
-
 			}
 			
 			var im2 = document.getElementById("img2");
 			var odd2 = 0;
-
 			im2.onclick = function(){
-
 				if( (re.exec(uu.value)) && (0 == w) ){
-                    
 					var p2 = document.getElementById("password2");
-				
 					if(odd2 % 2==0){
 						p2.type="text";
-					} else {
+					}else{
 						if(ul.value != "确认密码" && un.value != "设置密码")
-						{
+					    {
 							p2.type="password";
 						}
 					}
-
 					odd2++;
-
 				}
 			}				
-	}		
+		
+		}		
 
 </script>
 
@@ -547,13 +526,12 @@ body, table, tr, td {
 
 	<div id="middle">
 		<!-- 提交方式为post/POST,后端调用RegisUser1的doPost方法。这里用post为的是在网页地址栏上不让用户名和密码显示在跳转地址的后面，保证用户信息的私密性 -->
-		<form  method="post" action="RegistUser1"
-			onkeydown="if(event.keyCode==13)return false;" />
+		<form method="post" action="RegistUser1" onkeydown="if(event.keyCode==13)return false;">
 		<table id="form_tab">
 			<tr>
 				<td><span id="unique">请你随意起一个有个性的名字吧~</span>
 					<span id="unique2"><img class="v" src="image/capture.jpg">
-					名字这东西是能随便起的吗？麻烦你认真一点！！（示例：_剑侠客、_ab9辣$^.!G） </span></td>
+					名字这东西是能随便起的吗？麻烦你认真一点！！（示例：_Jack、_ab9$^.!G） </span></td>
 			</tr>
 			<tr>
 				<td><input class="username" type="text" name="username"
@@ -592,10 +570,11 @@ body, table, tr, td {
 				</td>
 			</tr>
 			<tr>
-				<td><input id="button" disabled="true" type="submit"
+				<td><input id="button" type="submit"
 					value="立即注册" /> <span id="span"></span></td>
 			</tr>
 		</table>
+		
 		</form>
 
 	</div>

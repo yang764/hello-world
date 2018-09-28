@@ -294,7 +294,7 @@ input {
 	
 	<div id="mod">请选择学习模块</div> 
 	
-	<form method="get" action="/613/Xiaobai"
+	<form method="get" action="Xiaobai"
 		onkeydown="if(event.keyCode==13)return false;">
 		<table>
 			<tr>

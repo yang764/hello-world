@@ -27,38 +27,36 @@ public class God extends HttpServlet {
 		request.setAttribute("MOD", parameter);
 		if( parameter.equals("baseFilter") ){
 			response.setContentType("text/html;charset=utf-8");
-			File file = new File("C:/Users/Hang Yang/Desktop/study/eclipse installation/eclipse/workspace/613/WebContent/baseFilter.html");	
+			File file = new File(this.getServletContext().getRealPath("baseFilter.html"));	
 			BufferedInputStream bis = new BufferedInputStream(new FileInputStream(file));
 			byte[] b = new byte[(int)file.length()];
 			bis.read(b);			
 			response.getOutputStream().write(b);
-			response.setHeader("Refresh", "8; url=/613/laoyi3.html");
+			response.setHeader("Refresh", "20; url=/613/laoyi3.html");
 	
 		}else if ( parameter.equals("仿QQ列表分组") ){
 			response.setContentType("text/html;charset=utf-8");
-			File file = new File("C:/Users/Hang Yang/Desktop/study/eclipse installation/eclipse/workspace/613/WebContent/仿QQ列表分组.html");	
+			File file = new File(this.getServletContext().getRealPath("仿QQ列表分组.html"));	
 			BufferedInputStream bis = new BufferedInputStream(new FileInputStream(file));
 			byte[] b = new byte[(int)file.length()];
 			bis.read(b);			
 			response.getOutputStream().write(b);
-			response.setHeader("Refresh", "8; url=/613/laoyi3.html");
+			response.setHeader("Refresh", "20; url=/613/laoyi3.html");
 			
 		} else if ( parameter.equals("ValidateForm") ){
 			response.setContentType("text/html;charset=utf-8");
-			File file = new File("C:/Users/Hang Yang/Desktop/study/eclipse installation/eclipse/workspace/613/WebContent/ValidateForm.html");	
+			File file = new File(this.getServletContext().getRealPath("ValidateForm.html"));	
 			BufferedInputStream bis = new BufferedInputStream(new FileInputStream(file));
 			byte[] b = new byte[(int)file.length()];
 			bis.read(b);			
 			response.getOutputStream().write(b);
-			response.setHeader("Refresh", "8; url=/613/laoyi3.html");
-		}
-		
+			response.setHeader("Refresh", "20; url=/613/laoyi3.html");
+		}		
 	}
-
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		System.out.println("到learn");
+		System.out.println("at God doPost()");
 		learn(request, response);
 	}
 

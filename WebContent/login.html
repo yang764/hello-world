@@ -156,12 +156,24 @@
 			var uu = document.getElementsByName("username")[0];
 			var ul = document.getElementsByName("password")[0];
 			var im = document.getElementById("img2");
+			var sub = document.getElementById("sub");
 			
 			if(ul.value == "密码"){
 				ul.type = "text";
 			}
 			
+			sub.disabled = false;
+			
+			sub.onclick = function(){
+				
+				if(ul.value == "密码" && uu.value == "用户名"){
+					sub.disabled = true;
+				}
+						
+			}
+			
 			uu.onclick = function(){
+				sub.disabled = false;
 				if(uu.value == ""){
 					uu.value = "用户名";
 				}
@@ -178,6 +190,7 @@
 			}
 					
 			ul.onclick = function(){
+				sub.disabled = false;
 				if(ul.value == ""){
 					ul.type = "text";
 					ul.value = "密码";
@@ -208,24 +221,20 @@
 				}		
 			}
 		
-			var odd2 = 0;
-			
-			im.onclick = function(){
-		            
-					if(odd2 % 2==0){
-						ul.type="text";
-					} else {
-						if(ul.value != "密码")
-						{
-							ul.type="password";
-						}
+			var odd2 = 0;		
+			im.onclick = function(){		            
+				if(odd2 % 2==0){
+					ul.type="text";
+				}else{
+					if(ul.value != "密码"){
+						ul.type="password";
 					}
+				}
+				odd2++;			
+			}
 
-					odd2++;
-				
-			}		
-		}	
-
+			
+		}		
 </script>
 	
 </head>
@@ -248,11 +257,15 @@
 			<input type="text" name="username" value="用户名"/>
 			<input type="password" name="password" value="密码"/>
 			<img id="img2" src="image/apture.jpg">
-			<input type="submit" value="登 录"/>
+			<input id="sub" type="submit" value="登 录"/>
 		</form>
 		<span id="line2">
-			<a href="MainPage.jsp"> <span>请注册</span>
-			</a> <span>没有账号？</span>
+			<a href="MainPage.jsp"> 
+			<form method="post" action="Servlet" onkeydown="if(event.keyCode==13)return false;">
+				<input type="submit" name="zhuce" value="请注册"/>
+			</form>
+			</a> 
+			
 		</span>
 	</div>
 	<!-- main end -->
